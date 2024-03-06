@@ -7,16 +7,22 @@ file_paths = data_dir.glob('yob*.txt')
 target_file = data_dir / 'merged.csv'
 target_file2 = data_dir / 'gregory.csv'
 target_file3 = data_dir / 'vowels.csv'
+target_file4 = data_dir / '2000s.csv'
 
 with open(target_file, "w", newline="") as outfile, \
      open(target_file2, "w", newline="") as outfile2, \
-     open(target_file3, "w", newline="") as outfile3:
+     open(target_file3, "w", newline="") as outfile3, \
+     open(target_file4, "w", newline="") as outfile4:
+
     writer = csv.writer(outfile)
     writer.writerow(["Year", "Name", "Gender", "Count"])
     writer2 = csv.writer(outfile2)
     writer2.writerow(["Year", "Name", "Gender", "Count"])
     writer3 = csv.writer(outfile3)
     writer3.writerow(["Year", "Name", "Gender", "Count"])
+    writer4 = csv.writer(outfile4)
+    writer4.writerow(["Year", "Name", "Gender", "Count"])
+
     for file_path in file_paths:
         data_field = re.search("\d+", file_path.name).group(0)
         with open(file_path, "r") as infile:
@@ -28,3 +34,5 @@ with open(target_file, "w", newline="") as outfile, \
                     writer2.writerow(row)
                 if row[1][0].lower() in ["a", "e", "i", "o", "u"]:
                     writer3.writerow(row)
+                if int(data_field) >= 2000:
+                    writer4.writerow(row)
