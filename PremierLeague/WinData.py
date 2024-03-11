@@ -9,11 +9,12 @@ print(clean_df.head())
 
 TeamWins = clean_df['WinningTeam'].value_counts()
 #TeamWins = TeamWins["Man City", "Arsenal", "Man United", "Liverpool", "Newcastle", "Tottenham", "Brighton", "Aston Villa", "Fulham", "Brentford", "Crystal Palace", "Chelsea", "Bournemouth", "West Ham", "Wolves", "Nottingham", "Leicester", "Everton", "Leeds", "Southampton"]
-print(dict(TeamWins)) #Fix this to remove the draw function
-"""
-TeamWinPercent = (TeamWins / 38) * 100
-print(TeamWinPercent)
 
+TeamWinPercent = (TeamWins / 38) * 100
+print(TeamWins, TeamWinPercent)
+
+
+"""
 TeamWinPercent.plot(kind='bar', legend=True)
 plt.xlabel('Team')
 plt.ylabel('Win Percentage')
